@@ -1,23 +1,12 @@
-import { ChangeDetectionStrategy, Component, signal } from "@angular/core";
-import { form, FormField } from "@angular/forms/signals";
-
-interface LoginData {
-    login: string;
-    password: string;
-}
+import { Component, signal } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
     selector: 'app-root',
+    imports: [RouterOutlet],
     templateUrl: './app.html',
-    styleUrl: './app.css',
-    imports: [FormField],
-    changeDetection: ChangeDetectionStrategy.OnPush,
+    styleUrl: './app.css'
 })
 export class App {
-    loginModel = signal<LoginData>({
-        login: '',
-        password: '',
-    });
-
-    loginForm = form(this.loginModel);
+    protected readonly title = signal('example-shop');
 }
